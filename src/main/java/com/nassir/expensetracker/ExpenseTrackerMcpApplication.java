@@ -1,5 +1,6 @@
 package com.nassir.expensetracker;
 
+import com.nassir.expensetracker.tools.ExpenseTools;
 import com.nassir.expensetracker.tools.PingTools;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
@@ -15,9 +16,9 @@ public class ExpenseTrackerMcpApplication {
 	}
 
 	@Bean
-	ToolCallbackProvider tools(PingTools pingTools) {
+	ToolCallbackProvider tools(PingTools pingTools, ExpenseTools expenseTools) {
 		return MethodToolCallbackProvider.builder()
-				.toolObjects(pingTools)
+				.toolObjects(pingTools, expenseTools)
 				.build();
 	}
 }
